@@ -1,0 +1,16 @@
+spring:
+  r2dbc:
+    url: ${R2DBC_DATABAE_URL:r2dbc:postgresql://localhost:5432/gql}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABSE_PASSWORD}
+    pool:
+      enabled: true
+      initial-size: 2
+      max-idle-time: 1m
+      max-size: 20
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
+    url: ${JDBC_DATABAE_URL:jdbc:postgresql://localhost:5432/gql}
+    user: ${DATABASE_USER:postgres}
+    password: ${DATABSE_PASSWORD}
+    driver-class-name: org.postgresql.Driver

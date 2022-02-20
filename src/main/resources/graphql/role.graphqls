@@ -1,0 +1,17 @@
+input RoleCreateRequest {
+    name: String!,
+    description: String
+}
+
+input RoleUpdateRequest {
+    id: ID!,
+    name: String!,
+    description: String
+}
+
+type Role {
+    id: ID!,
+    name: String!,
+    description: String
+}
+

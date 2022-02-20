@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author:  sdurachenko
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: login
+                  type: varchar(32)
+                  constraints:
+                    - nullable: false
+                    - unique: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: password
+                  type: varchar(32)
+                  constraints:
+                    - nullable: false
+            tableName: users
+  - changeSet:
+      id: 2
+      author: sdurachenko
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    - nullable: false
+                    - unique: true
+              - column:
+                  name: description
+                  type: varchar(255)
+            tableName: roles
+  - changeSet:
+      id: 3
+      author: sdurachenko
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    - primaryKey: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+                    - foreignKeyName: fk_user_id
+                    - references: users(id)
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    - nullable: false
+                    - foreignKeyName: fk_role_id
+                    - references: roles(id)
+            tableName: user_roles

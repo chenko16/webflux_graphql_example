@@ -1,0 +1,22 @@
+type Mutation {
+    createUser(user: UserCreateRequest!): User,
+    updateUser(user: UserUpdateRequest!): User,
+    deleteUser(id: ID!): User,
+    createRole(role: RoleCreateRequest!): Role,
+    updateRole(role: RoleUpdateRequest!): Role,
+    deleteRole(id: ID!): Role
+    linkUserWithRole(userId: ID!, roleId: ID!): [Role]
+    unlinkUserWithRole(userId: ID!, roleId: ID!): [Role]
+}
+
+type Query {
+    getUserDetailById(id: ID!): UserDetail
+    getAllUsers: [User],
+    getRoleById(id: Int!): Role,
+    getAllRoles: [Role]
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
